@@ -1,0 +1,23 @@
+import java.util.HashMap;
+public class Intersection{
+	
+	public static void intersection(int[] arr1, int[] arr2){
+		
+        HashMap<Integer,Integer> count = new HashMap<>();
+        for(int i : arr1){
+            if(count.containsKey(i))
+                count.put(i,count.get(i)+1);
+            else
+                count.put(i,1);
+        }
+        for(int i : arr2){
+            if(count.containsKey(i)){
+                System.out.println(i);
+                count.put(i,count.get(i)-1);
+                if(count.get(i)==0)
+                    count.remove(i);
+            }
+        }
+
+	}
+}
