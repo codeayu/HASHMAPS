@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Remove_Duplicates {
+    
+    public static ArrayList<Integer> removeDuplicates(int a[]){
+        
+        HashMap<Integer,Boolean> seen = new HashMap<>();
+        ArrayList<Integer> output = new ArrayList<>();
+        for(int i : a){
+            if(!seen.containsKey(i)){
+                seen.put(i,true);
+                output.add(i);
+            }
+        }
+        return output;
+        
+    }
+    public static void main(String args[]){
+        int a[] = {1,2,2,2,10000,7,7,5,6,2,3,1,1};
+        ArrayList<Integer> output = removeDuplicates(a);
+        System.out.println(output);
+    }
+    
+}
