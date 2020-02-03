@@ -1,0 +1,24 @@
+import java.util.*;
+
+public class Solution {
+	public static void PairSum(int[] input, int size) {
+		
+		HashMap<Integer,Integer> count = new HashMap<>();
+        for(int i : input){
+            if(count.containsKey(-i)){
+                int c = count.get(-i);
+                while(c-->0){
+                    if(i<0)
+                        System.out.println(i+" "+-i);
+                    else
+                        System.out.println(-i+" "+i);
+                }    
+            }
+            if(count.containsKey(i))
+                count.put(i,count.get(i)+1);
+            else
+                count.put(i,1);
+        }
+        
+	}
+}
