@@ -1,0 +1,53 @@
+import java.util.*;
+public class Solution {
+	public static ArrayList<Integer> longestConsecutiveIncreasingSequence(int[] arr) {
+		
+        HashMap<Integer, Boolean> seen = new HashMap<>();
+        HashMap<Integer, Integer> index = new HashMap<>();
+        ArrayList<Integer> output = new ArrayList<>();
+        int gmax = Integer.MIN_VALUE,cmax = 0,start=0;
+        
+        for(int i=0;i<arr.length;i++){
+            if(!seen.containsKey(arr[i]))
+                seen.put(arr[i],false);
+            if(!index.containsKey(arr[i]))
+                index.put(arr[i],i);
+        }
+        
+        for(int i=0;i<arr.length;i++){
+            if(seen.get(arr[i])==false){
+                seen.put(arr[i],true);
+                cmax=1;
+                int temp = arr[i]+1;
+                while(seen.containsKey(temp)){
+                    seen.put(temp,true);
+                    cmax+=1;
+                    temp+=1;
+                }
+                temp=arr[i];
+                while(seen.containsKey(temp-1)){
+                    seen.put(temp-1,true);
+                    cmax+=1;
+                    temp-=1;
+                }
+                if(cmax>gmax){
+                    gmax=cmax;
+                    start=temp;
+                }
+                if(cmax==gmax){
+                    if(index.get(temp)<index.get(start)){
+                        start=temp;
+                    }
+                }
+            }
+        }
+        
+        for(int i=0;i<gmax;i++){
+            output.add(start);
+            start+=1;
+        }
+        
+        return output;
+        
+	}
+}
