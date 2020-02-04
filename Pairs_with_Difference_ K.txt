@@ -1,0 +1,27 @@
+import java.util.HashMap;
+public class Solution {
+
+	public static void findPairsDifferenceK(int[] input, int k){
+        
+        HashMap<Integer,Integer> count = new HashMap<>();
+        for(int i : input){
+            if(count.containsKey(i+k)){
+                int c1 = count.get(i+k);
+                while(c1-->0){
+                    System.out.println(Math.min(i,i+k)+" "+Math.max(i,i+k));
+                }
+            }
+            if(k!=0 && count.containsKey(i-k)){
+                int c1 = count.get(i-k);
+                while(c1-->0){
+                    System.out.println(Math.min(i,i-k)+" "+Math.max(i,i-k));
+                }
+            }
+            if(count.containsKey(i))
+                count.put(i,count.get(i)+1);
+            else
+                count.put(i,1);    
+        }
+		
+	}
+}
