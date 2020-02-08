@@ -1,0 +1,18 @@
+import java.util.HashMap;
+public class Solution{	
+
+	public static boolean subarraySumTo0(int[] input) {
+		
+        HashMap<Integer, Boolean> sums = new HashMap<>();
+        int sum = 0;
+        for(int a : input){
+            sum+=a;
+            if(sums.containsKey(sum) || sum==0)
+                return true;
+            else
+                sums.put(sum,true);
+        }
+        return false;
+		
+	}
+}
