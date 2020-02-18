@@ -1,0 +1,27 @@
+import java.util.HashMap;
+public class Solution{
+    
+	public static int makeAnagram(String s1,String s2){
+        
+        HashMap<Character,Integer> hai = new HashMap<>();
+        
+        for(int i=0;i<s1.length();i++){
+            if(!hai.containsKey(s1.charAt(i)))
+                hai.put(s1.charAt(i),1);
+            else
+                hai.put(s1.charAt(i),hai.get(s1.charAt(i))+1);
+        }
+        
+        int len = 0;
+        
+        for(int i=0;i<s2.length();i++){
+            if(hai.containsKey(s2.charAt(i)) && hai.get(s2.charAt(i))>0){
+                len+=2;
+                hai.put(s2.charAt(i),hai.get(s2.charAt(i))-1);
+            }
+        }
+        
+        return s1.length() + s2.length() - len;
+	}
+
+}
